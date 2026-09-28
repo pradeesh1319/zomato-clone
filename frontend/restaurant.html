@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Restaurant — Foodie</title>
+  <meta name="description" content="View restaurant menu, ratings, and details." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>" />
+</head>
+<body>
+
+  <!-- ═══════ BANNER ═══════ -->
+  <div class="detail-banner" id="detail-banner">
+    <img id="banner-image" src="" alt="Restaurant banner" />
+    <div class="detail-banner-overlay"></div>
+    <div class="detail-banner-content">
+      <a href="index.html" class="back-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Back
+      </a>
+      <h1 class="detail-title" id="detail-title">Loading…</h1>
+      <div class="detail-meta" id="detail-meta"></div>
+    </div>
+  </div>
+
+  <!-- ═══════ INFO BAR ═══════ -->
+  <div class="detail-info-bar" id="detail-info-bar"></div>
+
+  <!-- ═══════ MENU ═══════ -->
+  <section class="menu-section" id="menu-section">
+    <h2 class="menu-section-title">Menu</h2>
+    <div id="menu-content"></div>
+  </section>
+
+  <!-- ═══════ FLOATING CART BUTTON ═══════ -->
+  <button class="floating-cart-btn" id="floating-cart-btn" onclick="openCart()">
+    🛒 View Cart
+    <span class="cart-badge-count" id="cart-badge-count">0</span>
+  </button>
+
+  <!-- ═══════ CART SIDEBAR ═══════ -->
+  <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h2>🛒 Your Cart</h2>
+      <button class="cart-close-btn" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items-list" id="cart-items-list"></div>
+    <div class="cart-footer" id="cart-footer">
+      <div class="cart-total-row">
+        <span class="cart-total-label">Total</span>
+        <span class="cart-total-amount" id="cart-total-amount">₹0</span>
+      </div>
+      <button class="checkout-btn" id="checkout-btn" onclick="openCheckout()">
+        Proceed to Checkout
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════ CHECKOUT MODAL ═══════ -->
+  <div class="modal-overlay" id="checkout-modal">
+    <div class="modal">
+      <h2>📦 Delivery Details</h2>
+      <p class="modal-subtitle">Fill in your details to place the order</p>
+      <form id="checkout-form" onsubmit="placeOrder(event)">
+        <div class="form-group">
+          <label for="customer-name">Full Name</label>
+          <input type="text" id="customer-name" placeholder="John Doe" required />
+        </div>
+        <div class="form-group">
+          <label for="customer-phone">Phone Number</label>
+          <input type="tel" id="customer-phone" placeholder="9876543210" required />
+        </div>
+        <div class="form-group">
+          <label for="customer-address">Delivery Address</label>
+          <textarea id="customer-address" placeholder="House no, Street, Landmark, City..." required></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="modal-cancel-btn" onclick="closeCheckout()">Cancel</button>
+          <button type="submit" class="modal-confirm-btn" id="place-order-btn">
+            Place Order
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══════ ORDER SUCCESS MODAL ═══════ -->
+  <div class="modal-overlay success-modal" id="success-modal">
+    <div class="modal">
+      <div class="success-icon">✓</div>
+      <h2>Order Placed!</h2>
+      <p>Your food is being prepared and will be delivered soon.</p>
+      <div class="order-id-display" id="order-id-display">Order #---</div>
+      <br/>
+      <button class="success-home-btn" onclick="window.location.href='index.html'">
+        Back to Home
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer class="footer">
+    Made with ❤️ — <span>foodie</span> clone project
+  </footer>
+
+  <script src="js/restaurant.js"></script>
+</body>
+</html>
